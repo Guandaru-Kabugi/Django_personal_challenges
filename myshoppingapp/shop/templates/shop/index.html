@@ -1,19 +1,24 @@
-{% comment %} <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Document</title>
-</head>
-<body>
-    <h1>This is my homepage!</h1>
-</body>
-</html> {% endcomment %}
-
+{% extends "shop/base.html" %}
+{% block content %}
 
 {% for item in item_list %}
-    <ul>
-            <a href="/shop/{{item.id}}">{{item.id}}.  {{item.item_name}}</a>
-    </ul>
+   <div class="row">
+        <div class="col-md-3 offset-md-2" "image-container">
+            <img class="img-card" height="150px" src="{{item.item_image}}">
+
+        </div>
+        <div class="col-md-4">
+            <h3>{{ item.item_name }}</h3>
+            <h5>{{ item.item_descp }}</h5>
+            <h6>kes {{ item.item_price }}</h6>
+        </div>
+        <div class="col-md-2">
+            <a href="{% url "shop:detail" item.id %}" class="btn btn-success">Details</a>
+        </div>
+
+   </div> 
 {% endfor %}
+{% endblock  %}
+<ul>
+    <a href="/shop/{{item.id}}">{{item.id}}.  {{item.item_name}}</a>
+</ul>
